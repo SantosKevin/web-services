@@ -1,0 +1,112 @@
+<div class="imagenFondo">
+    <div class="row mb-2  mt-1">
+        <div class="col-sm-12 h1 text-center font-weight-bold text-white">
+            Estadisticas Covid-19
+        </div>
+    </div>
+
+    <div class="row justify-content-center  mb-3">
+        <div class="col-sm-12 col-md-9 bg-light">
+            <form class="letraForm p-2 mb-2" #formInfo="ngForm">
+                    <div class="form-group">
+                        <label for="seleccion">Eliga el Pais:</label>
+                        <select class="form-control"  name="seleccion" [(ngModel)]="pais" #seleccion="ngModel" required>
+                            <option  *ngFor="let item of paisesSelect" [value]="item">{{item}}</option>                 
+                        </select>
+                        <div *ngIf="seleccion.invalid && (seleccion.dirty || seleccion.touched)" class="bg-danger mt-1 text-white">
+                            <div *ngIf="seleccion.errors.required">
+                              Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="checkCasos" name="confir" [(ngModel)]="confirmados">
+                        <label class="form-check-label" for="checkCasos">Casos Confirmados</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="checkCurados" name="curado" [(ngModel)]="curados">
+                        <label class="form-check-label" for="checkCurados">Curados</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="checkFallecidos" name="fallecido" [(ngModel)]="fallecidos">
+                        <label class="form-check-label" for="checkFallecidos">Fallecidos</label>
+                    </div>
+                    <!-- Button trigger modal -->
+                    <button type="submit" class="btn btn-secondary font-weight-bold" (click)="prepararCovid()"  [disabled]="!formInfo.form.valid" data-toggle="modal" data-target="#exampleModal">
+                      Consultar Informacion
+                    </button>
+            </form>
+        </div>
+    </div>
+    <div class="">Abajo nuestra tabla de informacion:</div>
+</div>
+<div class="row mt-5 fondoTabla">
+    <div class="col-12 h4">
+        Estadisticas:
+    </div>
+    <div class="col-sm-12 table-responsive">
+        <table class="table table-hover table-dark">
+            <thead class="bg-secondary letraEncabezadoForm font-weight-bold">
+              <tr class="text-right align-self-center">
+                <td class="text-left" colspan="2" scope="col">Ubicacion</td>
+                <td scope="col">Casos Confirmados</td>
+                <td scope="col">Casos Activos</td>
+                <td scope="col">Curados</td>
+                <td scope="col">Facellidos</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-right" *ngFor="let c of estadisticas">                        
+                <td class="text-left">
+                    <img [src]="getImagenPaises(c.country)" width="30em" alt="pais">    
+                </td>
+                <td class="text-left">{{c.country}}</td>
+                <td>{{c.confirmed}}</td>
+                <td>{{c.actives}}</td>
+                <td>{{c.recovered}}</td>
+                <td>{{c.deaths}}</td>                        
+              </tr>
+            </tbody>
+          </table>         
+        </div>           
+    </div>
+ 
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">INFORMACION SOLICITADA: </h5>
+        
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <div>
+              <label class="text-dark font-weight-bold">Pais:</label>
+                {{covidConsultaInformacion.country}}<hr> 
+            </div>
+            <div *ngIf="confirmados" >
+                <label class="text-danger font-weight-bold">Casos confirmados:</label>
+                {{covidConsultaInformacion.confirmed}}<hr>
+            </div>
+            <div *ngIf="curados" >
+              <label class="text-success font-weight-bold">Curados:</label>
+                {{covidConsultaInformacion.recovered}} <hr> 
+            </div>
+             <div *ngIf="fallecidos">
+               <label  class="text-dark font-weight-bold">Fallecidos:</label>
+                {{covidConsultaInformacion.deaths}}<hr>
+             </div>
+          </div>
+       </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" (click)="limpiarDatos()" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-12 tituloZodiaco text-success">
+      Los signos del zodiaco
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 col-md-4" *ngFor="let item of nombresSignos">
+      <div class="row">
+        <div class="col-4 p-1 text-center"><img [src]="devolverImagenLogo(item)" class="img-fluid" alt="primer signo"></div>            
+        <div class="col-8 p-1 align-self-center">
+          <label class="letraBoton bg-success text-center">{{item | titlecase}}</label>
+        </div>        
+      </div> 
+    </div>
+
+</div>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+        <form action="" #formDia="ngForm">
+            <div class="form-group">
+                <label for="cat" class=""> Seleccione el Tipo de D&iacute;a:</label>
+                <select name="cat" id="cat" class="form-control" [(ngModel)]="dia" required>
+                    <option value="today"> Today</option>
+                    <option value="yesterday"> Yesterday</option>
+                    <option value="tomorrow"> Tomorrow</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success btn-lg" (click)="actualizarDia()"  [disabled]="!(formDia.form.valid)">Actualizar Horoscopo</button>
+            </div>
+        </form>
+    </div>
+    
+</div>
+  <hr>
+  <br>    
+  <article class="row articuloZodiaco" *ngFor="let sign of signos">
+    <div class="col-12 tituloTarjeta" >
+      {{sign.name | uppercase}}
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-8 subtituloTarjeta">
+           {{sign.name | titlecase}} - {{sign.type_day | titlecase}}
+          <br>
+          <p class="contenidoTarjeta ">
+            <b> Date Range: </b> {{sign.date_range}}
+          </p>
+          <p class="contenidoTarjeta">
+            <b> Compability: </b> {{sign.compatibility}}
+          </p> 
+          <p class="contenidoTarjeta textoCortado">
+            <b> Description: </b> {{sign.description}}
+          </p> 
+          <p class="contenidoTarjeta ">
+            <b> Lucky Number: </b> {{sign.lucky_number}}
+          </p>
+          <p class="contenidoTarjeta ">
+            <b> Lucky Color: </b> {{sign.color}}
+          </p>   
+        </div>
+        <div class="col-4 align-self-center">
+          <img [src]="devolverImagenGrande(sign.name)" alt="zod" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </article>
+

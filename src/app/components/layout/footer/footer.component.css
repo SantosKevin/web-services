@@ -1,0 +1,14 @@
+.fondoFooter{
+    background-color: #4B4B4B;
+}
+.texto{
+    color: white;
+}
+.footer-social a:hover{
+    color: #b47539;
+}
+.footer-social{
+    font-size: 2em;
+    margin: .5em;
+    padding: .3em;
+}

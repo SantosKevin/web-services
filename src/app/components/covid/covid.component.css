@@ -1,0 +1,14 @@
+.letraForm{
+    font-family: 'Courier New';
+}
+.letraEncabezadoForm{
+    font-size: 1em;
+    color: rgb(51, 48, 48);
+}
+.imagenFondo{
+    background-image: url(../../../assets/img/covid.jpg);
+    background-size:100% 100%;
+}
+.fondoTabla{
+    background: linear-gradient(to right,rgba(0, 91, 202, 0.603), rgba(52, 141, 250, 0.158));
+}

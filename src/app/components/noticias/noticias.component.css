@@ -1,0 +1,13 @@
+.fondoTitulo{
+    background: rgb(161, 0, 0);
+    color: white;
+    padding: .2em;
+}
+
+.fondoRedes{
+    background: linear-gradient(to bottom, rgb(255, 162, 85), rgb(255, 185, 127)) ;
+}
+
+.tamanioRedes{
+    font-size: 1.2em;
+}

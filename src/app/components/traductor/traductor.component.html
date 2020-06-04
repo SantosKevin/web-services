@@ -1,0 +1,45 @@
+<section class="row justify-content-center mt-2">
+
+    <div class="col-12 col-md-10">
+        <p class="text-center mt-3 h2 text-dark font-weight-bold">Pruebe nuestro traductor</p>
+        <p class="mt-4 h5 text-dark">Con la lista desplegable puede elegir los idiomas disponibles.</p>
+        <p class=" h5 text-dark">Hay un bot&oacute;n para intercambiar el idioma.</p>
+        <p class="h5 text-dark">Escriba su texto en el cuadro origen y presione el bot&oacute;n traducir!</p>
+    </div>
+
+</section>
+<div class="row  mt-5 mb-2">
+    <div class="col-12 col-md-5">
+        <select [(ngModel)]="texto.source" class="btn p-2  mb-2 btn-block text-white font-weight-bold">
+          <option  *ngFor="let idioma of idiomas" [ngValue]="idioma.codigo">{{ idioma.idioma }}</option>
+       </select>
+    </div>
+    <div class="col-12 col-md-2 ">
+        <button class=" btn btn-block p-2 mb-2" (click)="invertirIdiomas()"><i class="fas fa-arrows-alt-h text-white"></i></button>
+    </div>
+    <div class="col-12 col-md-5 ">
+        <select [(ngModel)]="texto.target" class="btn p-2  mb-2 btn-block text-white font-weight-bold">
+      <option  *ngFor="let idioma of idiomas" [ngValue]="idioma.codigo">{{ idioma.idioma }}</option>
+    </select>
+    </div>
+
+</div>
+        
+<div class="row">
+    <div class="col-12 col-md-6">
+        <textarea class="col-12 rounded-lg" rows="5" placeholder="Ingresá tu texto aquí" name="txtInput" [(ngModel)]="texto.input"> </textarea>
+    </div>
+    <div class="col-12 col-md-6">
+        <textarea readonly class="col-12 rounded-lg" rows="5" name="txtOutput"> {{ salida }} </textarea>
+    </div>
+</div>            
+                
+            
+<div class="row justify-content-end">
+     <div class="col-auto mt-1 mb-3">
+         <button class="btn mr-1 rounded text-white font-weight-bold" (click)="limpiarCampos()">Limpiar</button>
+        <button class="btn rounded text-white font-weight-bold" (click)="traducir()">Traducir</button>
+    </div>
+</div>
+
+

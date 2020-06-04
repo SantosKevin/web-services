@@ -1,0 +1,21 @@
+#cantidad::placeholder{
+    text-align: right;
+}
+.encabezadoForm{
+    background-color: rgb(38, 38, 70);
+    font-size: 1.4rem;
+    font-family: 'Courier New';
+}
+.cuerpoForm{
+    background-color: rgb(63, 63, 99);
+    font-family: 'Courier New';
+}
+.boton{
+    background-color: orange;
+}
+.boton:hover{
+    background-color: rgb(255, 115, 0);
+}
+.flechaBoton{
+    color: white;
+}

@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-sm-9 h1 text-center font-weight-bold">
+        Últimas noticias
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-md-9">
+        <div class="row">
+            <div class="col-12">
+                <form action="">
+                    <div class="form-group">
+                        <label for="cat" class="">Categor&iacute;a:</label>
+                        <select name="cat" id="cat" class="form-control" [(ngModel)]="categoria">
+                            <option value="soccer"> Soccer</option>
+                            <option value="tennis"> Tennis</option>
+                            <option value="basketball"> Basketball</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" (click)="cargarNoticias()">Cargar Noticias</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="input-group mb-2 mr-sm-2">
+                <input type="text" class="form-control" placeholder="buscar noticias por titulo..." name="filterNoticia" [(ngModel)]="filterNoticia">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-search"></i></div>
+                </div>
+            </div>
+            </div>  
+        </div>
+
+    </div>  
+    <aside class="col-md-3 d-none d-sm-block card p-0 align-self-start fondoRedes"> 
+        <a href="https://www.eldon.com.ar/e-shop/remeras-de-hombre.html?p=2" target="_blank">
+            <img src="../../../assets/img/pub1.jpg" class="w-100 h-100" alt="publicidad">
+        </a>         
+    </aside> 
+</div>
+
+
+
+<div class="row">
+    <div class="col-12 col-md-9">
+        <div class="" *ngFor="let item of noticias | filter:filterNoticia  ; index as i">
+            <div class="card mt-2 mb-2">
+                <img src="{{item.img}}" class="img-fluid" alt="imagenDeporte">
+                <div class="card-body">
+                    <h4 class="fondoTitulo"> {{item.tit}} </h4>
+                    <p class="card-text">{{item.des}}</p>
+                    <div *ngIf="leerMenos[i] == true">
+                        <hr>
+                        <p>{{item.con}}</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button *ngIf="leerMas[i] == true" class="btn btn-success" (click)="activarLeerMas(i,item)">Leer Mas...</button>
+                    <button *ngIf="leerMenos[i] == true" class="btn btn-success" (click)="desactivarLeerMas(i)">Ocultar Contenido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <aside class="col-md-3 d-none d-sm-block card p-0 align-self-start fondoRedes"> 
+        <a href="https://www.eldon.com.ar/e-shop/zapatillas.html" target="_blank">
+            <img src="../../../assets/img/pub2.png" class="w-100 h-100" alt="publicidad">
+        </a>
+        <hr>
+        <div class="">
+            <p class="mt-2 mb-2">
+                <span class="p-2 font-weight-bold"><i class=""></i> Seguinos en las redes</span>
+            </p>
+            <ul class="tamanioRedes mb-5">
+                <li >
+                    <a href="https://www.facebook.com/" target="_blank" class="p-1"><i class="fab fa-facebook"></i> Facebook</a>  
+                </li> 
+                <li >
+                    <a href="https://twitter.com/"  target="_blank" class="p-1"><i class="fab fa-twitter-square"></i> Twitter</a> 
+                </li> 
+                <li >
+                    <a href="https://www.google.com/"  target="_blank" class="p-1"><i class="fab fa-google-plus-g"></i> Google Plus</a>  
+                </li> 
+                <li >
+                    <a href="https://www.instagram.com/"  target="_blank" class="p-1"><i class="fab fa-instagram-square"></i> Instagram</a> 
+                </li> 
+                <li >
+                    <a href="https://ar.pinterest.com/" target="_blank"  class="p-1"><i class="fab fa-pinterest-square"></i> Pinterest</a> 
+                </li> 			
+            </ul>
+        </div>            
+    </aside>
+</div>
+

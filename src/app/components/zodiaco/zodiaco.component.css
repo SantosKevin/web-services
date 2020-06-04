@@ -1,0 +1,45 @@
+.articuloZodiaco{
+    background-color: rgba(192, 201, 192, 0.781);
+    margin-bottom: 1rem;
+}
+.letraBoton{
+    font-family: cursive;
+    width: 97%;
+    height: 80%;
+    padding: 0.7em;
+    border-radius: .4em;
+    color: white;
+}
+.tituloZodiaco{
+    font-size: 2rem;
+    font-family: cursive;
+}
+.tituloTarjeta{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1.5rem;
+    background-color: rgb(21, 119, 21);
+}
+.subtituloTarjeta{
+    color: rgb(69, 69, 199);
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 1.5rem;
+}
+.contenidoTarjeta{
+    color: black;
+    font-weight: lighter;
+    font-size: 1rem;
+}
+/* para que el texto se corte a las 5 lineas */
+.textoCortado{
+    display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.textoCortado:hover{
+    -webkit-line-clamp: 30;
+    cursor: pointer;
+}
